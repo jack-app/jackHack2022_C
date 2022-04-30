@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>SearchRecipe</title>
   </head>
   <body>
@@ -13,15 +14,18 @@
       <h1>いまのキブンは？</h1>
       <p>
         <input type="search" name="search" placeholder="たとえば....あまくち、しょっぱい、こってり" />
-        <input type="submit" name="go" value="さがす！"/>
-        <input type="submit" name="IDontKnow" value="わからない..."/>
+        <div>
+          <input type="submit" name="go" value="さがす！"/>
+          <input type="submit" name="IDontKnow" value="わからない..."/>
+        </div>
       </p>
     </form>
+    <!--検索結果の部分-->
     <section>
-      <p>あなたは</p>
+      <p>あなたはいま<span class=""></span>キブン！</p>
       <p>「単語」のおすすめ料理</p>
       <div>
-        <img >
+        <img href = "">
         <p></p>
       </div>
       <div>
@@ -38,13 +42,23 @@
         <p></p>
       </div>
       <p>もっと･･･
-        <span>あまい</span>
-        <span>からい</span>
-        <span>しぶい</span>
-        <span>にがい</span>
-        <span>すっぱい</span>
+        <span><a href="#">あまい</a></span>
+        <span><a href="#">からい</a></span>
+        <span><a href="#">しぶい</a></span>
+        <span><a href="#">にがい</a></span>
+        <span><a href="#">すっぱい</a></span>
         のがいい！</p>
     </section>
     <script type="module" src="./form.js"></script>
   </body>
 </html>
+<!--今後の流れ
+色、フォント、枠線、線の色と太さ、空白の空け方
+・backendからもらった情報をどう回すか
+・あまいキブンのところ
+・画像自体をbackendからもらった情報に従って変えたい
+・もっと･･･のがいい！の部分
+→パラメータが変動して再検索される
+再検索できるようにしなければならない
+・jsのパスをimgタグに渡せる機能を入れる
+-->
