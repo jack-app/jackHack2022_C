@@ -1,5 +1,4 @@
 body{
-    color: rgba(127, 70, 0, 0.74)
     font-family: 'Noto Sans JP', sans-serif;
     width: 80%;
     margin: 0 auto;
@@ -41,7 +40,7 @@ input {
     background    : #ffffff;   /* 背景色     */
     color         : rgba(127, 70, 0, 0.74);     /* 文字色     */
     transition    : .3s;         /* なめらか変化 */
-    box-shadow    : 4px 4px 4px #666666;  /* 影の設定 */
+    box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
     border        : 2px solid #ffffff;    /* 枠の指定 */
     margin: 0 90px;
 }
@@ -56,6 +55,7 @@ input {
     text-align: center;
     line-height: 40px;
     border: 3px solid rgba(247,135,0,0.4);
+    border-radius : 4%;
 }
 
 
@@ -81,7 +81,7 @@ a{
     font-size: 24px;
     line-height: 16px;
     margin: 0 8px;
-    transition: 0.8s;
+    transition: 0.7s;
 }
 .link:hover {
     opacity: 0.3;
