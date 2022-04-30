@@ -8,12 +8,14 @@
     <title>SearchRecipe</title>
   </head>
   <body>
-    <form action="" method="get" id="form">
+    <form class="fetchForm" id="form">
       <p>
         <input type="search" name="search" placeholder="キーワードを入力" />
-        <input type="submit" name="submit" />
+        <input type="button" name="submit" value="送信" class="btn" />
       </p>
     </form>
-    <script type="module" src="./form.js"></script>
+    <div id="searchResult"></div>
+
+    <script type="module" src="./js/searchform.js"></script>
   </body>
 </html>
