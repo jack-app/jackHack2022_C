@@ -4,25 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <title>SearchRecipe</title>
   </head>
   <body>
-    
-    <form action="" method="get" id="form">
-      <h1>いまのキブンは？</h1>
-      <p>
-        <input type="search" name="search" placeholder="たとえば....あまくち、しょっぱい、こってり" />
-        <div>
-          <input type="submit" name="go" value="さがす！"/>
-          <input type="submit" name="IDontKnow" value="わからない..."/>
+    <div class="top-wrapper">
+      <form action="" method="get" id="form">
+        <h1 class = "yourfeelingnow">
+          いまのキブンは？</h1>
+        <input type="search" name="search" class="bar" placeholder="たとえば....あまくち、しょっぱい、こってり" />
+        <div class="ButtonSpace">
+          <div class="select">
+            <input type="submit" name="go" class="button" value="さがす！"/>
+          </div>
+          <div class="select">
+            <input type="submit" name="IDontKnow" class="button" value="わからない..."/>
+          </div>
         </div>
-      </p>
-    </form>
+      </form>
+    </div>
     <!--検索結果の部分-->
-    <section>
-      <p>あなたはいま<span class=""></span>キブン！</p>
+    <section class="container">
+      <p>あなたはいま<span class="largest"></span>キブン！</p>
+    <!--ここは検索されたキーワードをそのまま表示-->
       <p>「単語」のおすすめ料理</p>
       <div>
         <img href = "">
@@ -42,11 +48,11 @@
         <p></p>
       </div>
       <p>もっと･･･
-        <span><a href="#">あまい</a></span>
-        <span><a href="#">からい</a></span>
-        <span><a href="#">しぶい</a></span>
-        <span><a href="#">にがい</a></span>
-        <span><a href="#">すっぱい</a></span>
+        <span class = "link link_sweet"><a href="#">あまい</a></span>
+        <span class="link link_hot"><a href="#">からい</a></span>
+        <span class="link link_salty"><a href="#">しょっぱい</a></span>
+        <span class="link link_bitter"><a href="#">にがい</a></span>
+        <span class="link link_sour"><a href="#">すっぱい</a></span>
         のがいい！</p>
     </section>
     <script type="module" src="./form.js"></script>
@@ -55,10 +61,37 @@
 <!--今後の流れ
 色、フォント、枠線、線の色と太さ、空白の空け方
 ・backendからもらった情報をどう回すか
+jsで対処　こちら側はもらったパラメータを言葉に変更出来るようにする
 ・あまいキブンのところ
 ・画像自体をbackendからもらった情報に従って変えたい
 ・もっと･･･のがいい！の部分
 →パラメータが変動して再検索される
 再検索できるようにしなければならない
 ・jsのパスをimgタグに渡せる機能を入れる
+-->
+<!--jsの練習
+ "param": {
+    "sweetness": 0, 
+    "astringency": 0, 
+    "hot": 0, 
+    "bitterness": 0, 
+    "sour": 0
+            },
+連想配列の中の値を全部取得して
+最大値を取得
+max_param = Math.max.apply(null,object.param(function(o){return o.element;}))
+最大値出しているキーを取得
+const result = Object.keys(obj).filter( (key) => { 
+  return obj[key] === max_param
+ });
+console.log(result); //key3
+そのキーからクラスへ飛ぶ
+飛んだクラスを表示
+switch (class){
+  case:
+  case:
+  break;
+  let elements = document.getElementsByClassName('box');
+}
+
 -->
