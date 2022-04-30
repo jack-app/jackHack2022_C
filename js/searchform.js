@@ -31,16 +31,18 @@ const fetchForm = document.querySelector(".fetchForm");
 const btn = document.querySelector(".btn");
 const url = "https://intense-chamber-73486.herokuapp.com/mock/";
 const url2 = "../sample.json";
-let urlData;
-//console.log(fetchForm);
+//let urlData;
+
 const postFetch = () => {
   let formData = new FormData(fetchForm);
   for (let value of formData.entries()) {
     console.log(value);
   }
+
   /*
   console.log(formData);
 */
+
   const test = 7161963;
   /*console.log(`"${test}"`);
   console.log(
@@ -51,16 +53,34 @@ const postFetch = () => {
     <a href=""><img src="" alt="料理の画像５" /></a>`
   );
   */
-  function drawingSearchedResult() {
+
+  function drawingSearchedResult(receivedDataArrayOfDishes) {
     let searchResult = document.getElementById("searchResult");
+    let searchResultList;
+    //画像が存在すれば一度削除してからまた追加する
+    if (
+      (searchResultList = document.getElementById("searchResultList")) != null
+    ) {
+      searchResultList.remove();
+    }
     const htmlStr = `
-      <li>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="" alt="料理の画像１" /></a>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="" alt="料理の画像２" /></a>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="" alt="料理の画像３" /></a>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="" alt="料理の画像４" /></a>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="" alt="料理の画像５" /></a>
-      </li>
+      <ul id="searchResultList">
+        <li>
+          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[0].img}" alt="料理の画像１" /></a>
+        </li>
+        <li>
+          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[1].img}" alt="料理の画像２" /></a>
+        </li>
+        <li>
+          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[2].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[2].img}" alt="料理の画像３" /></a>
+        </li>
+        <li>
+          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[3].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[3].img}" alt="料理の画像４" /></a>
+        </li>
+        <li>
+          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[4].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[4].img}" alt="料理の画像５" /></a>
+        </li>
+      </ul>
       `;
     function htmlStrToElement(htmlStr) {
       const dummyDiv = document.createElement("div");
@@ -70,6 +90,30 @@ const postFetch = () => {
 
     const targetNewElement = htmlStrToElement(htmlStr);
     searchResult.prepend(targetNewElement);
+  }
+
+  function displayUserMood(receivedDataArrayOfParam) {
+    let userMood = document.getElementById("userMood");
+    const htmlStr = `<p>あなたは今...... ${test} キブン！</P>`;
+    function htmlStrToElement(htmlStr) {
+      const dummyDiv = document.createElement("div");
+      dummyDiv.innerHTML = htmlStr;
+      return dummyDiv.firstElementChild;
+    }
+    const targetNewElement = htmlStrToElement(htmlStr);
+    userMood.prepend(targetNewElement);
+  }
+
+  function nextSelectionUserDo() {
+    let nextSelection = document.getElementById("nextSelection");
+    const htmlStr = `<p>もっと...... ${test} ${test} ${test} ${test} ${test} のがいい！</P>`;
+    function htmlStrToElement(htmlStr) {
+      const dummyDiv = document.createElement("div");
+      dummyDiv.innerHTML = htmlStr;
+      return dummyDiv.firstElementChild;
+    }
+    const targetNewElement = htmlStrToElement(htmlStr);
+    nextSelection.prepend(targetNewElement);
   }
 
   fetch(url, {
@@ -85,10 +129,11 @@ const postFetch = () => {
       return response.json();
     })
     .then((data) => {
-      urlData = JSON.parse(data);
+      let receivedDataArrayOfDishes = JSON.parse(data).dishes;
+      let receivedDataArrayOfParam = JSON.parse(data).param;
       console.log(data);
-      console.log(urlData.dishes);
-      drawingSearchedResult();
+      console.log(receivedDataArrayOfDishes);
+      drawingSearchedResult(receivedDataArrayOfDishes);
     })
     .catch((error) => {
       console.log(error);
@@ -96,6 +141,7 @@ const postFetch = () => {
 };
 
 btn.addEventListener("click", postFetch, false);
+
 /*
 fetch(url, {
   method: "POST",
