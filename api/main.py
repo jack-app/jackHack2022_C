@@ -26,14 +26,11 @@ def makeResponseDataByWords(words):
     param = wv.calcParamByWords(words)
     l = []
     for dish in db.query(models.Dish).all():
-        # print(dish)
         similarity = wv.calcSimilarityByParam(dish, param)
         l.append((similarity, dish))
     l.sort(key = lambda x: x[0], reverse=True)
-    # print(l)
     data = []
     for i in range(5):
-        # print(i)
         _, d = l[i]
         data.append(
             {
@@ -51,14 +48,11 @@ def makeResponseDataByWords(words):
 def makeResponseDataByParam(param):
     l = []
     for dish in db.query(models.Dish).all():
-        # print(dish)
         similarity = wv.calcSimilarityByParam(dish, param)
         l.append((similarity, dish))
     l.sort(key = lambda x: x[0], reverse=True)
-    # print(l)
     data = []
     for i in range(5):
-        # print(i)
         _, d = l[i]
         data.append(
             {
@@ -86,42 +80,4 @@ async def searchByParam(param: schemas.Params):
     res = makeResponseDataByParam(param)
     return res
  
-@app.post("/mock/")
-async def mock():
-    sample_res_dict: dict = {
-        "param": {
-            "sweetness": 0, 
-            "solty": 0, 
-            "hot": 0, 
-            "bitterness": 0, 
-            "sour": 0
-            },
-        "dishes": [
-            {
-                "name": "sample",
-                "img": "img"
-            },
-            {
-                "name": "sample",
-                "img": "img"
-            },
-            {
-                "name": "sample",
-                "img": "img"
-            },
-            {
-                "name": "sample",
-                "img": "img"
-            },
-            {
-                "name": "sample",
-                "img": "img"
-            },
-        ]
-    }
-
-    return json.dumps(sample_res_dict)
-
-
-
 db.close()

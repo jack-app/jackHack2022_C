@@ -20,5 +20,4 @@ def seed(db: Session):
             sour=int(d[5])
         )
         db.add(record)
-        # print(record)
     db.commit()

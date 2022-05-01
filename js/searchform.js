@@ -1,35 +1,5 @@
-/*
-const fetchForm = document.querySelector(".fetchForm");
-
-const btn = document.querySelector(".btn");
-
-const url = "https://intense-chamber-73486.herokuapp.com/mock/";
-const url2 = "../sample.json";
-*/
-/*
-console.log(fetchForm);
-
-btn.addEventListener("click", postFetch, false);
-*/
-/*
-async function formFetch() {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      data: { sweetness: 0, astringency: 0, hot: 0, bittreness: 0, sour: 0 },
-    },
-  });
-  const data = await response.json();
-  console.log(response);
-}
-
-formFetch();
-*/
-
 const fetchForm = document.querySelector(".fetchForm");
 const btn = document.querySelector(".btn");
-const url = "https://intense-chamber-73486.herokuapp.com/mock/";
 const urlword = "http://localhost:8000/searchByWords/";
 const urlparam = "http://localhost:8000/searchByParam/";
 
@@ -46,21 +16,21 @@ function drawingSearchedResult(receivedDataArrayOfDishes) {
     searchResultList.remove();
   }
   const htmlStr = `
-    <ul id="searchResultList">
+    <ul class="menuList" id="searchResultList">
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[0].img}" alt="料理の画像１" /></a>
+        <a href="https://cookpad.com/search/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="img/img${receivedDataArrayOfDishes[0].img}.jpg" alt="${receivedDataArrayOfDishes[0].name}" /></a>
       </li>
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[1].img}" alt="料理の画像２" /></a>
+        <a href="https://cookpad.com/search/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="img/img${receivedDataArrayOfDishes[1].img}.jpg" alt="${receivedDataArrayOfDishes[1].name}" /></a>
       </li>
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[2].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[2].img}" alt="料理の画像３" /></a>
+        <a href="https://cookpad.com/search/${receivedDataArrayOfDishes[2].name}" target="_blank" rel="noopener noreferrer"><img src="img/img${receivedDataArrayOfDishes[2].img}.jpeg" alt="${receivedDataArrayOfDishes[2].name}" /></a>
       </li>
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[3].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[3].img}" alt="料理の画像４" /></a>
+        <a href="https://cookpad.com/search/${receivedDataArrayOfDishes[3].name}" target="_blank" rel="noopener noreferrer"><img src="img/img${receivedDataArrayOfDishes[3].img}.jpg" alt="${receivedDataArrayOfDishes[3].name}" /></a>
       </li>
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[4].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[4].img}" alt="料理の画像５" /></a>
+        <a href="https://cookpad.com/search/${receivedDataArrayOfDishes[4].name}" target="_blank" rel="noopener noreferrer"><img src="img/img${receivedDataArrayOfDishes[4].img}.jpg" alt="${receivedDataArrayOfDishes[4].name}" /></a>
       </li>
     </ul>
     `;
@@ -86,7 +56,7 @@ function drawingSearchedResultdemo(receivedDataArrayOfDishes) {
   const htmlStr = `
     <ul class="menuList" id="searchResultList">
       <li>
-        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像１" /></a>
+        <a href="https://cookpad.com/search/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像１" /></a>
       </li>
       <li>
         <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像２" /></a>
@@ -113,14 +83,14 @@ function drawingSearchedResultdemo(receivedDataArrayOfDishes) {
 }
 
 function displayUserMood(receivedDataArrayOfParam) {
-  arrayOfReceivedDataArrayOfParam = [
+  const arrayOfReceivedDataArrayOfParam = [
     receivedDataArrayOfParam.sweetness,
     receivedDataArrayOfParam.astringency,
     receivedDataArrayOfParam.hot,
     receivedDataArrayOfParam.bitterness,
     receivedDataArrayOfParam.sour,
   ];
-  let maxPaeam = Math.max(
+  let maxParam = Math.max(
     receivedDataArrayOfParam.sweetness,
     receivedDataArrayOfParam.astringency,
     receivedDataArrayOfParam.hot,
@@ -149,24 +119,8 @@ function displayUserMood(receivedDataArrayOfParam) {
 }
 
 const postFetch = () => {
-  let formData = new FormData(fetchForm);
-  for (let value of formData.entries()) {
-    console.log(value);
-  }
-
-  /*
-  console.log(formData);
-*/
-
-  /*console.log(`"${test}"`);
-  console.log(
-    `<a href="https://cookpad.com/recipe/${test}"><img src="" alt="料理の画像１" /></a>
-    <a href=""><img src="" alt="料理の画像２" /></a>
-    <a href=""><img src="" alt="料理の画像３" /></a>
-    <a href=""><img src="" alt="料理の画像４" /></a>
-    <a href=""><img src="" alt="料理の画像５" /></a>`
-  );
-  */
+  const d = document.getElementById("search").value
+  console.log(d);
 
   function nextSelectionUserDo() {
     let nextSelection = document.getElementById("nextSelection");
@@ -179,30 +133,41 @@ const postFetch = () => {
     const targetNewElement = htmlStrToElement(htmlStr);
     nextSelection.prepend(targetNewElement);
   }
+  const toArray = (str) => {
+    return []
+  }
+  const postData = {
+    words: toArray(d)
+  }
 
   fetch(urlword, {
     method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        console.log("error!");
-      }
-      console.log("ok!");
+    mode: 'cors',
+    body: JSON.stringify(postData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((response) => {
       console.log(response);
       return response.json();
     })
     .then((data) => {
-      let receivedDataArrayOfDishes = JSON.parse(data).dishes;
-      let receivedDataArrayOfParam = JSON.parse(data).param;
-      console.log(data);
-      console.log(receivedDataArrayOfDishes);
-      drawingSearchedResult(receivedDataArrayOfDishes);
+      // console.log(data);
+      const dishes = data.data
+      const param = data.param
+      console.log(dishes);
+      console.log(param);
+      // console.log(data);
+      drawingSearchedResult(dishes);
     })
     .catch((error) => {
       console.log(error);
     });
+};
 
+btn.addEventListener("click", postFetch, false);
+
+const postFetch2 = () => {
   fetch(urlparam, {
     method: "POST",
     body: formData,
@@ -225,20 +190,6 @@ const postFetch = () => {
     .catch((error) => {
       console.log(error);
     });
-};
+}
+// btn.addEventListener("click", displayUserMood, false);
 
-btn.addEventListener("click", drawingSearchedResultdemo, false);
-btn.addEventListener("click", displayUserMood, false);
-
-/*
-fetch(url, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    for (const { key, value } of data) {
-      console.log(key + ":" + value);
-    }
-  });
-*/

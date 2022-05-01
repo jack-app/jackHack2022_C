@@ -1,10 +1,8 @@
 import gensim
-from pprint import pprint
 import schemas
 import math
 
 model = gensim.models.KeyedVectors.load_word2vec_format('entity_vector/entity_vector.model.bin',binary=True,limit=None)
-# model = gensim.models.KeyedVectors.load("chive-1.2-mc30_gensim-full/chive-1.2-mc30.bin")
 
 def calcParamByWords(words):
     ret = schemas.Params(sweetness=0.2,solty=0.2,hot=0.2,bitterness=0.2,sour=0.2)
