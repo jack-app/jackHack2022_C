@@ -3,7 +3,7 @@ from typing import List
 
 class Params(BaseModel):
     sweetness: float
-    astringency: float
+    solty: float
     hot: float
     bitterness: float
     sour: float
@@ -17,7 +17,7 @@ class Dish(BaseModel):
     id :int
     img: str
     sweetness: int
-    astringency: int
+    solty: int
     hot: int
     bitterness: int
     sour: int

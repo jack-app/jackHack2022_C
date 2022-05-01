@@ -85,15 +85,13 @@ async def searchByWords(words: schemas.Words):
 async def searchByParam(param: schemas.Params):
     res = makeResponseDataByParam(param)
     return res
-
-
-
+ 
 @app.post("/mock/")
 async def mock():
     sample_res_dict: dict = {
         "param": {
             "sweetness": 0, 
-            "astringency": 0, 
+            "solty": 0, 
             "hot": 0, 
             "bitterness": 0, 
             "sour": 0

@@ -14,7 +14,7 @@ def seed(db: Session):
         record = models.Dish(
             name=d[0], 
             sweetness=int(d[1]),
-            astringency=int(d[2]),
+            solty=int(d[2]),
             hot=int(d[3]),
             bitterness=int(d[4]),
             sour=int(d[5])
