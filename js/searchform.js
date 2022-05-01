@@ -46,7 +46,7 @@ function drawingSearchedResult(receivedDataArrayOfDishes) {
   const htmlStr = `
     <ul id="searchResultList">
       <li>
-        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="../recipeimage.webp" alt="料理の画像１" /></a>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[0].img}" alt="料理の画像１" /></a>
       </li>
       <li>
         <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[1].img}" alt="料理の画像２" /></a>
