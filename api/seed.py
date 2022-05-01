@@ -7,11 +7,8 @@ def Load_Data(file_name):
     return data.values.tolist()
 
 def seed(db: Session):
-    file_name = "sample.csv"
+    file_name = "seed.csv"
     data = Load_Data(file_name)
-    
-    dd = models.Dish(name="sample",sweetness=0, astringency=0, hot=0, bitterness=0, sour=0)
-    db.add(dd)
 
     for d in data:
         record = models.Dish(
