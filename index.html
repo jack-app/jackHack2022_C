@@ -4,20 +4,107 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://kit.fontawesome.com/341029e7d7.js" crossorigin="anonymous"></script>
     <title>SearchRecipe</title>
   </head>
   <body>
-    <form class="fetchForm" id="form">
-      <p>
-        <input type="search" name="search" placeholder="キーワードを入力" />
-        <input type="button" name="submit" value="送信" class="btn" />
-      </p>
-    </form>
-    <div id="searchResult"></div>
-    <div id="userMood"></div>
-    <div id="nextSelection"></div>
 
-    <script type="module" src="./js/searchform.js"></script>
+    <div class="top-wrapper">
+      <form action="" method="get" id="form">
+        <h1 class = "yourfeelingnow">
+          いまのキブンは？</h1>
+        <input type="search" name="search" id = "search" class="bar" placeholder="たとえば....あまくち、しょっぱい、こってり" />
+        <div class="ButtonSpace">
+          <div class="select">
+            <input type="submit" name="go" class="button" value="さがす！"/>
+          </div>
+          <div class="select">
+            <input type="submit" name="IDontKnow" class="button" value="わからない..."/>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--検索結果の部分-->
+    <section class="container">
+      <p>あなたはいま<span class="largest" id = "largest"></span>キブン?</p>
+    <!--ここは検索されたキーワードをそのまま表示-->
+      <p><span id = "keyword"></span>のおすすめ料理</p>
+      <div class="dishes">
+        <div class="dish">
+          <p>ハンバーグ</p>
+          <img class="dish_icon" src = "meat.jpg">
+        </div>
+        <div class="dish">
+          <p>カレーライス</p>
+          <img class="dish_icon" src = "curry.jpg">
+        </div>
+        <div class="dish">
+          <p>ハンバーグ</p>
+          <img class="dish_icon" src = "meat.jpg">
+        </div>
+        <div class="dish">
+          <p>パスタ</p>
+          <img class="dish_icon" src = "pasta.jpeg">
+        </div>
+        <div class="dish">
+          <p>パスタ</p>
+          <img class="dish_icon" src = "pasta.jpeg">
+      </div>
+      <p>もっと･･･
+        <span class = "link link_sweet"><a href="#">あまい</a></span>
+        <span class="link link_hot"><a href="#">からい</a></span>
+        <span class="link link_salty"><a href="#">しょっぱい</a></span>
+        <span class="link link_bitter"><a href="#">にがい</a></span>
+        <span class="link link_sour"><a href="#">すっぱい</a></span>
+        のがいい！
+      </p>
+      <a class="twitter" href="https://twitter.com/intent/tweet?url=http://localhost:5500/index.html%0dおすすめのりょうりをさがそう！"
+      ><span><i class="fa-brands fa-twitter"></i></span>
+        Twitterにのせる！
+    </a>
+    </section>
+    <script type="module" src="./form.js"></script>
+    <script type="text/javascript" src="searchrecipe.js"></script>
   </body>
 </html>
+<!--今後の流れ
+色、フォント、枠線、線の色と太さ、空白の空け方
+・backendからもらった情報をどう回すか
+jsで対処　こちら側はもらったパラメータを言葉に変更出来るようにする
+・あまいキブンのところ
+・画像自体をbackendからもらった情報に従って変えたい
+・もっと･･･のがいい！の部分
+→パラメータが変動して再検索される
+再検索できるようにしなければならない
+・jsのパスをimgタグに渡せる機能を入れる
+-->
+<!--jsの練習
+ "param": {
+    "sweetness": 0, 
+    "astringency": 0, 
+    "hot": 0, 
+    "bitterness": 0, 
+    "sour": 0
+            },
+連想配列の中の値を全部取得して
+最大値を取得
+max_param = Math.max.apply(null,object.param(function(o){return o.element;}))
+最大値出しているキーを取得
+const result = Object.keys(obj).filter( (key) => { 
+  return obj[key] === max_param
+ });
+console.log(result); //key3
+そのキーからクラスへ飛ぶ
+飛んだクラスを表示
+switch (class){
+  case:
+  case:
+  break;
+
+  let elements = document.getElementsByClassName('box');
+}
+
+-->
