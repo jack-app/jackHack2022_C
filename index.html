@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://kit.fontawesome.com/341029e7d7.js" crossorigin="anonymous"></script>
     <title>SearchRecipe</title>
   </head>
   <body>
@@ -14,7 +15,7 @@
       <form action="" method="get" id="form">
         <h1 class = "yourfeelingnow">
           いまのキブンは？</h1>
-        <input type="search" name="search" class="bar" placeholder="たとえば....あまくち、しょっぱい、こってり" />
+        <input type="search" name="search" id = "search" class="bar" placeholder="たとえば....あまくち、しょっぱい、こってり" />
         <div class="ButtonSpace">
           <div class="select">
             <input type="submit" name="go" class="button" value="さがす！"/>
@@ -27,25 +28,29 @@
     </div>
     <!--検索結果の部分-->
     <section class="container">
-      <p>あなたはいま<span class="largest"></span>キブン?</p>
+      <p>あなたはいま<span class="largest" id = "largest"></span>キブン?</p>
     <!--ここは検索されたキーワードをそのまま表示-->
-      <p>「単語」のおすすめ料理</p>
-      <div>
-        <img href = "">
-        <p></p>
-      </div>
-      <div>
-        <img >
-        <p></p>
-      </div><div>
-        <img >
-        <p></p>
-      </div><div>
-        <img >
-        <p></p>
-      </div><div>
-        <img >
-        <p></p>
+      <p><span id = "keyword"></span>のおすすめ料理</p>
+      <div class="dishes">
+        <div class="dish">
+          <p>ハンバーグ</p>
+          <img class="dish_icon" src = "meat.jpg">
+        </div>
+        <div class="dish">
+          <p>カレーライス</p>
+          <img class="dish_icon" src = "curry.jpg">
+        </div>
+        <div class="dish">
+          <p>ハンバーグ</p>
+          <img class="dish_icon" src = "meat.jpg">
+        </div>
+        <div class="dish">
+          <p>パスタ</p>
+          <img class="dish_icon" src = "pasta.jpeg">
+        </div>
+        <div class="dish">
+          <p>パスタ</p>
+          <img class="dish_icon" src = "pasta.jpeg">
       </div>
       <p>もっと･･･
         <span class = "link link_sweet"><a href="#">あまい</a></span>
@@ -53,9 +58,15 @@
         <span class="link link_salty"><a href="#">しょっぱい</a></span>
         <span class="link link_bitter"><a href="#">にがい</a></span>
         <span class="link link_sour"><a href="#">すっぱい</a></span>
-        のがいい！</p>
+        のがいい！
+      </p>
+      <a class="twitter" href="https://twitter.com/intent/tweet?url=http://localhost:5500/index.html%0dおすすめのりょうりをさがそう！"
+      ><span><i class="fa-brands fa-twitter"></i></span>
+        Twitterにのせる！
+    </a>
     </section>
     <script type="module" src="./form.js"></script>
+    <script type="text/javascript" src="searchrecipe.js"></script>
   </body>
 </html>
 <!--今後の流れ
@@ -91,6 +102,7 @@ switch (class){
   case:
   case:
   break;
+
   let elements = document.getElementsByClassName('box');
 }
 

@@ -20,7 +20,7 @@ input {
     text-align: center;
     font-size: 32px;
     margin: 0 0 50px 0;
-    border-radius: 5%;
+    border-radius: 15%;
 }
 .ButtonSpace {
     margin: 0 auto;
@@ -57,8 +57,13 @@ input {
     border: 3px solid rgba(247,135,0,0.4);
     border-radius : 4%;
 }
-
-
+.dish {
+    float: left;
+    width:20%;
+}
+.dish_icon {
+    width: 75%;
+}
 .yourfeelingnow{
     padding: 90px 0 75px 0;
     font-size: 32px;
@@ -111,3 +116,24 @@ a{
     font-weight: bold;
     border-bottom: 2px solid #666666;
 }
+.twitter{
+    float: right;
+    margin-top: 40px;
+    margin-right: 20px;
+    display       : inline-block;
+    border-radius : 20%;          /* 角丸       */
+    font-size     : 12pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 4px 8px;   /* 余白       */
+    background    : rgb(26 142 220);     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 3px #666666;  /* 影の設定 */
+  }
+  .twitter:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    opacity       : 1;           /* カーソル時透明度 */
+  }
