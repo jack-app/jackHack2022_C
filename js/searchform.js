@@ -32,6 +32,83 @@ const btn = document.querySelector(".btn");
 const url = "https://intense-chamber-73486.herokuapp.com/mock/";
 const url2 = "../sample.json";
 //let urlData;
+const test = 7161963;
+
+function drawingSearchedResult(receivedDataArrayOfDishes) {
+  let searchResult = document.getElementById("searchResult");
+  let searchResultList;
+  //画像が存在すれば一度削除してからまた追加する
+  if (
+    (searchResultList = document.getElementById("searchResultList")) != null
+  ) {
+    searchResultList.remove();
+  }
+  const htmlStr = `
+    <ul id="searchResultList">
+      <li>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="../recipeimage.webp" alt="料理の画像１" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[1].img}" alt="料理の画像２" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[2].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[2].img}" alt="料理の画像３" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[3].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[3].img}" alt="料理の画像４" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[4].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[4].img}" alt="料理の画像５" /></a>
+      </li>
+    </ul>
+    `;
+  function htmlStrToElement(htmlStr) {
+    const dummyDiv = document.createElement("div");
+    dummyDiv.innerHTML = htmlStr;
+    return dummyDiv.firstElementChild;
+  }
+
+  const targetNewElement = htmlStrToElement(htmlStr);
+  searchResult.prepend(targetNewElement);
+}
+
+function drawingSearchedResultdemo(receivedDataArrayOfDishes) {
+  let searchResult = document.getElementById("searchResult");
+  let searchResultList;
+  //画像が存在すれば一度削除してからまた追加する
+  if (
+    (searchResultList = document.getElementById("searchResultList")) != null
+  ) {
+    searchResultList.remove();
+  }
+  const htmlStr = `
+    <ul class="menuList" id="searchResultList">
+      <li>
+        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像１" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像２" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像３" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像４" /></a>
+      </li>
+      <li>
+        <a href="https://cookpad.com/recipe/${test}" target="_blank" rel="noopener noreferrer"><img src="./recipeimage.webp" alt="料理の画像５" /></a>
+      </li>
+    </ul>
+    `;
+  function htmlStrToElement(htmlStr) {
+    const dummyDiv = document.createElement("div");
+    dummyDiv.innerHTML = htmlStr;
+    return dummyDiv.firstElementChild;
+  }
+
+  const targetNewElement = htmlStrToElement(htmlStr);
+  searchResult.prepend(targetNewElement);
+}
 
 const postFetch = () => {
   let formData = new FormData(fetchForm);
@@ -43,7 +120,6 @@ const postFetch = () => {
   console.log(formData);
 */
 
-  const test = 7161963;
   /*console.log(`"${test}"`);
   console.log(
     `<a href="https://cookpad.com/recipe/${test}"><img src="" alt="料理の画像１" /></a>
@@ -53,44 +129,6 @@ const postFetch = () => {
     <a href=""><img src="" alt="料理の画像５" /></a>`
   );
   */
-
-  function drawingSearchedResult(receivedDataArrayOfDishes) {
-    let searchResult = document.getElementById("searchResult");
-    let searchResultList;
-    //画像が存在すれば一度削除してからまた追加する
-    if (
-      (searchResultList = document.getElementById("searchResultList")) != null
-    ) {
-      searchResultList.remove();
-    }
-    const htmlStr = `
-      <ul id="searchResultList">
-        <li>
-          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[0].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[0].img}" alt="料理の画像１" /></a>
-        </li>
-        <li>
-          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[1].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[1].img}" alt="料理の画像２" /></a>
-        </li>
-        <li>
-          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[2].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[2].img}" alt="料理の画像３" /></a>
-        </li>
-        <li>
-          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[3].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[3].img}" alt="料理の画像４" /></a>
-        </li>
-        <li>
-          <a href="https://cookpad.com/recipe/${receivedDataArrayOfDishes[4].name}" target="_blank" rel="noopener noreferrer"><img src="${receivedDataArrayOfDishes[4].img}" alt="料理の画像５" /></a>
-        </li>
-      </ul>
-      `;
-    function htmlStrToElement(htmlStr) {
-      const dummyDiv = document.createElement("div");
-      dummyDiv.innerHTML = htmlStr;
-      return dummyDiv.firstElementChild;
-    }
-
-    const targetNewElement = htmlStrToElement(htmlStr);
-    searchResult.prepend(targetNewElement);
-  }
 
   function displayUserMood(receivedDataArrayOfParam) {
     let userMood = document.getElementById("userMood");
@@ -140,7 +178,7 @@ const postFetch = () => {
     });
 };
 
-btn.addEventListener("click", postFetch, false);
+btn.addEventListener("click", drawingSearchedResultdemo, false);
 
 /*
 fetch(url, {

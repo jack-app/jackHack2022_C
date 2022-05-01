@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="top-wrapper">
-      <form method="post" class="fetchForm" id="form">
+      <form action="" method="get" id="form">
         <h1 class="yourfeelingnow">いまのキブンは？</h1>
         <input
           type="search"
@@ -29,12 +29,7 @@
         />
         <div class="ButtonSpace">
           <div class="select">
-            <input
-              type="button"
-              name="submit"
-              class="button btn"
-              value="さがす！"
-            />
+            <input type="submit" name="go" class="button" value="さがす！" />
           </div>
           <div class="select">
             <input
@@ -53,10 +48,6 @@
       <!--ここは検索されたキーワードをそのまま表示-->
       <p><span id="keyword"></span>のおすすめ料理</p>
 
-      <div id="searchResult"></div>
-      <div id="userMood"></div>
-      <div id="nextSelection"></div>
-
       <p>
         もっと･･･
         <span class="link link_sweet"><a href="#">あまい</a></span>
@@ -73,7 +64,8 @@
         Twitterにのせる！
       </a>
     </section>
-    <script type="module" src="./js/searchform.js"></script>
+    <script type="module" src="./form.js"></script>
+    <script type="text/javascript" src="searchrecipe.js"></script>
   </body>
 </html>
 <!--今後の流れ
